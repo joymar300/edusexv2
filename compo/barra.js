@@ -9,7 +9,9 @@ Vue.component('barra', {
             
             ></v-img>
             
-            <v-toolbar-title class="white--text" >Edusex</v-toolbar-title>
+            <v-toolbar-title class="white--text" >
+                <v-btn color="white" text href="index.html">EduSex</v-btn> 
+            </v-toolbar-title>
             
             <v-spacer></v-spacer>
             
@@ -26,4 +28,4 @@ Vue.component('barra', {
         </v-app-bar>  
   
     `
-});
+}); 
