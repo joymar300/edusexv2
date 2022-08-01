@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="compo/barra.js"></script>
+    <script src="compo/pie.js"></script>
+    <title>Articulos científicos</title>
+</head>
+<body>
+    <div id="arti">
+        <v-app >
+            <barra></barra>
+
+                <template name="links-pag">
+                    <v-container fluid grid-list-md class="orange lighten-4">
+                        <v-layout row wrap> 
+                                
+                            <v-flex xs12>
+                            <div class="text-xs-center text-sm-h2 font-weight-regular white--text mt-16 orange--text text--darken-1" align="center" ><p>Articulo científicos</p></div>
+                            
+                            </v-flex>
+                            
+                            <v-flex xs12 	sm6 md4 v-for="arti in artis">
+                            <v-card class="mx-auto mt-4 mb-4" max-width="450">
+                                <v-img :src="arti.src" height="300px"></v-img>
+                                <v-card-title style="word-break: break-word">
+                                {{arti.title}}
+                                </v-card-title>
+                            
+                                <v-card-text class="text-justify">
+                                {{arti.body}}
+                                </v-card-text>
+
+                            </v-card>
+                            
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </template>
+
+            <pie></pie>    
+        </v-app>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#arti',
+        vuetify: new Vuetify(),
+        data() {
+            return {
+                drawer: false,
+                group: null,
+                artis:[
+                    {title:"Uso de preservativos", body:"Pese a la problemática del SIDA y el creciente contagio de otras ETS, la juventud usa menos los preservativos debido en parte, a una falta de conciencia de riesgo.",src:"https://www.cdc.gov/condomeffectiveness/images/01-open.jpg" },
+                    {title:"¿Se debe aprender sobre la prostitución?", body:"Debemos aprender sobre la prostitución porque 40 millones de mujeres y niñas son prostituidas en todo el mundo “importadas” de países pobres, en guerra…etc. Estamos hablando de trata de mujeres y esclavitud. ", src:"https://static1.lasprovincias.es/www/multimedia/202203/23/media/cortadas/prostitucion-datos-espana3--620x349-Rcgq6eNprqcWdocXHtG7otL-624x385@RC.jpg" },
+                    {title:"El embarazo adolescente aumenta la mortalidad materna", body:"Según la Organización Mundial de la Salud (OMS), el embarazo en adolescentes incrementa el riesgo de mortalidad materna,prematurez y bajo peso al nacer. Las menores de 16 años tienen un riesgo de defunción materna cuatro veces más alto que las mujeresde 20 a 30 años, y la tasa de mortalidad de sus hijos recién nacidos es 50% superior. Esto sin tomar en cuenta las implicacioneseducativas, económicas y laborales, implicaciones de género e impacto en las familias.", src:"https://www.unidaddelamujer.es/wp-content/uploads/2018/03/pregnant-2635034_1280-e1575481693211.jpg" },
+                   
+                   
+                ]
+            }
+        },
+        
+    })
+</script>
+
+</html>

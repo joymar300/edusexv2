@@ -1,0 +1,39 @@
+[debug] [2022-08-01T17:24:16.358Z] ----------------------------------------------------------------------
+[debug] [2022-08-01T17:24:16.361Z] Command:       C:\Users\joymar\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\joymar\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase init hosting
+[debug] [2022-08-01T17:24:16.362Z] CLI Version:   11.4.1
+[debug] [2022-08-01T17:24:16.362Z] Platform:      win32
+[debug] [2022-08-01T17:24:16.362Z] Node Version:  v16.16.0
+[debug] [2022-08-01T17:24:16.363Z] Time:          Mon Aug 01 2022 12:24:16 GMT-0500 (GMT-05:00)
+[debug] [2022-08-01T17:24:16.364Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-01T17:24:16.382Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-01T17:24:16.382Z] > authorizing via signed-in user (destelloamarillo300@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\joymar\Documents\git\edusex
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-08-01T17:24:48.863Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-08-01T17:24:49.291Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-08-01T17:24:49.291Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project edusex-1d08b (edusex) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

@@ -7,8 +7,9 @@
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <script src="compo/barra.js"></script>
+ 
   <script src="compo/pie.js"></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
   
@@ -16,173 +17,137 @@
 <body>
   <div id="app">
     <v-app>
-       
-            <barra></barra>
-          <v-main>   
-            <v-container class="mt-4 mb-4 elevation-6 blue-grey lighten-5" grid-list-md >
-                <v-row>
-<!-- --------------primer enunciado de la pagina--------------------- -->
-                  <template name="what is">
-                    <v-container >
-                      <v-row wrap >
-                        <v-card class="elevation-0 pa-2 pink lighten-4" height="750" src="https://educacion30.b-cdn.net/wp-content/uploads/2020/10/libros-educacion-sexual-978x652.jpg" >
-                          <v-layout wrap justify-space-between>
-                            <v-flex xs12>
-                              <v-card-title class="justify-center"  >
-                                <p class="text-sm-h2  font-weight-regular red--text text--darken-2">¿Qué es EduSex?</p>
-                              </v-card-title>
-                              
-                            </v-flex>
-  <!-- CARRUSEL DE IMAGENES -->
+      <v-app-bar  app color="purple darken-2" elevate-on-scroll  >
+        
+        <v-app-bar-nav-icon @click="drawer = true" color="white"  class="d-flex d-sm-none"></v-app-bar-nav-icon>
+        <v-img src="img/icono.png" max-height="60" max-width="75"></v-img>
 
-                            <v-flex xs12 md6  >
-                              <template name="carrusel">
-                                <v-layout justify-center mb-2 >
-                                  <v-flex xs12>
-                                    
-                                    <v-carousel
-                                      cycle
-                                      max-height="100%"
-                               
-                                      hide-delimiter-background
-                                      show-arrows-on-hover
-                                      class=" rounded-xl elevation-5"
-                                    >
-                                        <v-carousel-item
-                                        v-for="(item,i) in items"
-                                        :key="i"
-                                        :src="item.src"
-                                        >
-                                        <v-row
-                                        class="fill-height title"
-                                        align="center"
-                                        justify="center"
-                                      >
-                                        <div class="display-4 white--text" >
-                                           {{ item.title }}
-                                        </div>
-                                      </v-row>
-                                      </v-carousel-item>
-                                    </v-carousel>
-                                  </v-flex>
-                                </v-layout>
-                              </template>
-                              
-                            </v-flex>
-                            <v-flex xs12 md6>                              
-                              <v-card-text class="ml-3 pa-5" >
-                                <p class=" text-sm-h2 font-weight-regular font-italic "> 
-                                  EduSex, tiene como objetivo fortalecer los conocimientos biológicos, psicológicos y de relaciones interpersonales y sociales relacionados con la sexualidad humana en un concepto de género y respeto.
-                                </p>
-                              </v-card-text>
-                            </v-flex>
+        <v-toolbar-title class="white--text"  >
+            <v-btn color="white" text href="index.html"  >EduSex</v-btn> 
+        </v-toolbar-title>
+        
+        <v-spacer></v-spacer>
+        <v-btn text color="white"  href="info.html">
+          ¿Quienes somos?
+        </v-btn>
+        <v-btn text>
+            <v-toolbar-title class="white--text d-none d-sm-flex">Registarse</v-toolbar-title>
+        </v-btn>
+        <v-btn text>
+            <v-toolbar-title class="white--text d-none d-sm-flex" >Login</v-toolbar-title>
+        </v-btn>
 
+      </v-app-bar>
+      <v-navigation-drawer v-model="drawer" absolute temporary>
+        <v-list nav dense>
+          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-home</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-list-item>
 
-                          </v-layout>
-                        </v-card>
-                      </v-row>
-                      
-                    </v-container>
-                  </template>
-<!-- ----------- ------------------------------------------------>
-<!-- CARD CON LOS LINKS A LAS PAGINAS                     -->
-                    <template name="links-pag">
-                        <v-container grid-list-md class="orange lighten-4">
-                            <v-layout row wrap>
-                              <v-flex xs12>
-                                <div class="text-xs-center text-sm-h2 font-weight-regular white--text" align="center" ><p>Datos</p></div>
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>login</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>registrase</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+          <v-main class="ma-0 pa-0">   
+            <v-container class="elevation-6 blue-grey lighten-5" fluid grid-list-md>
+                <v-row >
+                  
+                  <!-- CARRUSEL DE IMAGENES -->
+                  
+                  
+                    <template name="carrusel">
+                          <v-carousel cycle height="965" hide-delimiter-background   hide-delimiters>
+                              <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src" aspect-ratio="1.7" gradient="to top right, rgba(217,42,145,0.577468487394958) 14%, rgba(125,32,162,0.896796218487395) 91%">
+                              <v-row class="fill-height" align="center"  justify="center">
                                 
-                              </v-flex>
-                              
-                              <v-flex xs12 	sm6 md4 v-for="link in links">
-                                <v-card class="mx-auto mt-4 mb-4" max-width="400">
-                                  <v-img :src="link.src" height="200px"></v-img>
-                                  <v-card-title>
-                                    {{link.title}}
+                                <v-card class="transparent elevation-0">
+                                  <v-card-title class=" text-h2 text-sm-h1 white--text font-weight-bold " style="word-break: break-word"  primary-title>
+                                    Bienvenido a EduSex
                                   </v-card-title>
-                              
-                                  <v-card-subtitle>
-                                  {{link.sub}}
-                                  </v-card-subtitle>
-                              
                                   <v-card-actions>
-                                    <v-btn color="orange lighten-2" text :href="link.path">
-                                      Explore
-                                    </v-btn>
-                              
-                                    <v-spacer></v-spacer>
+                                  </v-card-actions>
                                 </v-card>
                                 
-                              </v-flex>
-                            </v-layout>
-                        </v-container>
-                    </template>
-  <!-- CARD CON LAS IMAGENES DE LOS DESARROLLADORES                   -->
-                    <template name="desarrolladores">
-                      <v-container class="mt-5 pa-2 mb-3 " >
-                        <v-card class="mb-3 elevation-0 "  >
-                          <v-card-title class="justify-center  "  >
-                            <p class="text-xs-center font-weight-black ">Desarrolladores</p>
-                          </v-card-title>
-                        </v-card>
-                        <v-row dense>
+                              </v-row>
+                            </v-carousel-item>
+                          </v-carousel>
+                        </template>
+                        
+                        <template>
+                          <v-container style="background: linear-gradient(0deg, rgba(189,31,125,0.865983893557423) 14%, rgba(223,51,132,0.835171568627451) 45%, rgba(95, 1, 133, 0.841) 90%)" fluid>
+                            <v-row>
+                              <v-col cols="12">
+                                <v-card class="transparent elevation-0 white--text">
+                                  <v-card-title  class="justify-center  font-weight-bold text-sm-h3" primary-title>
+                                    Información
+                                  </v-card-title>
+                                </v-card>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-sheet
+                                  class="mx-auto transparent"
+                                  max-width="100%"
+                                >
+                                  <v-slide-group
+                                    multiple
+                                    show-arrows
+                                  >
+                                    <v-slide-item
+                                      v-for="link in links"
+                                      :key="link"
+                                      v-slot="{ active, toggle }"
+                                    >
+                                    <v-card class=" ma-4 elevation-4" max-width="400">
+                                      <v-img :src="link.src" height="200px"></v-img>
+                                      <v-card-title>
+                                        {{link.title}}
+                                      </v-card-title>
+                                  
+                                      <v-card-subtitle>
+                                      {{link.sub}}
+                                      </v-card-subtitle>
+                                  
+                                      <v-card-actions class="d-flex justify-center">
+                                        <v-btn color="purple darken-2 white--text" :href="link.path">
+                                          Ver más
+                                        </v-btn>
+                                  
+                                      
+                                    </v-card>
+                                        
+                                      
+                                    </v-slide-item>
+                                  </v-slide-group>
+                                </v-sheet>
 
-                          <v-col
-                          v-for="perfil in perfils"
-                          :key="perfil.title"
-                          :cols="perfil.flex"
-                          >
+                              </v-col>
 
-                            <v-card
-                            class="mx-auto pa-2 elevation-5 rounded-xl"
-                            max-width="300"
+                            </v-row>
                             
-
-                            >
-                            <v-img
-
-                              :src="perfil.src"
-                              height="200px"
-                              class="rounded-xl"
-                            ></v-img>
-                        
-                            <v-card-title v-text="perfil.title">
-                              
-                            </v-card-title>
-
-                            <v-card-subtitle>
-                              diseño
-                            </v-card-subtitle>
-                        
-                            <v-card-actions>
-                              <v-spacer></v-spacer>
-                        
-                              <v-btn
-                                icon
-                                @click="show = !show"
-                              >
-                                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                              </v-btn>
-                            </v-card-actions>
-                        
-                            <v-expand-transition>
-                              <div v-show="show">
-                                <v-divider></v-divider>
-                        
-                                <v-card-text>
-                                  correo: rafa@gmail.com
-                                 <v-spacer></v-spacer> 
-                                  numero de contacto: 321344645
-                                </v-card-text>
-                              </div>
-                            </v-expand-transition>
-                            </v-card>
+                          </v-container>
+                        </template>
+                    
+ <!-- --------------primer enunciado de la pagina--------------------- -->              
 
 
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </template>
+
+  <!-- CARD CON LAS IMAGENES DE LOS DESARROLLADORES                   -->
+
                 </v-row>
             </v-container>
            <pie></pie> 
@@ -198,31 +163,34 @@
       data () {
       return {
         show: false,
+        drawer: false,
+        group: null,
         items: [
           {
-            src: 'img/edufondo.jpg',
-            title: " "
+            src: 'https://img.freepik.com/vector-premium/gente-estudiando-educacion-sexual-leccion-biologia-anatomia-humana-leccion-salud-sexual-jovenes-anticoncepcion-sistema-reproductor-masculino-organo-interno-cuerpo-sexualidad-genero_458444-782.jpg?w=2000',
+            
           },
           {
-            src: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgVFhYYGRgYHBgYHBoZGBoYGBkZGhgaGhgYGhgcIS4lHB4rHxgYJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QHBISGjQhISE0NDQ0NDQ0NDQ0MTQ0NDQ0NDE0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0MTQ0NDQ0NDQ0NDU0NP/AABEIAMkA+wMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAAECAwUGB//EAEQQAAIBAgIECQoDBgYDAQAAAAECEQADEiEEMUFRBSJhcYGRkrHRBhMyQlJTcqGy0jOiwRQVFmKC8CNDk6PC4WOD8XP/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACERAQEAAgIDAAIDAAAAAAAAAAABAhESMQMhQTKhE1Fh/9oADAMBAAIRAxEAPwD0PhbTmRwofDKzEA7SN3JQqcJOdTz0L4U3lFYLXFI9gfU1YmlO9soiAF3xASJAwid43jPZma4a26t79vue38l8Kz7vC2kAkYzkfZT7aVvRb0DFdWduG2I6JOdT/Zbnvf8AbXxpMabU/vjSPbPZT7auThPSD657KfbS/Zbnvf8AbXxpfstz3v8Atr41dU2MTTrsZv8AJfCnPCFz2/kvhQLaJcIjzv5F8apPBTe9/IPGpxptp/t932vkvhQ97T9Ig4X/ACp9tCDgp/fHsDxp14Ocf57dgeNONNotwrpQ9duwn21X++dJ94ewn20V+xP738i+NMdCf3v5B41dU2qThjSfbPYT7aKtcJ34zc9lfCqRoL+9/IPGn/YH97+RfGlxqbWvwxcGRc9lfCofvy57bdlPCqn4Kc5m7+QeNQ/c7e9PYHjTiuxa8NOfXPZXwqGk8K3wAVc9lPtoccDt709geNWLwc4yF38g8acTag8NaT7w9hPtqP780n3h7CfbRX7uf3v5F8aX7uf3v5F8aujam3wxpJ9c9hPtol+Gbq63M/CvhUf3c/vfyDxqp+B2bXd/IPGpxNpnygue23YTwpDh+57Z7KeFDngT/wAp7A8af9xH3p7A8auhe/DF4ji3M/hT9VqpuGNJ9s9hPtpDgZh/mnsDxq392P738g8aaTYU8N6T7w9hPtqScNaSf8w9hPtq/wDdj+9/IPGl+6397+QeNNLtJeF7+1z2U+2k3DF8CcZ7KfbUf3W/vfyDxrN4UtXLMMXDoSB6EMDuOe6TPJG2pxQa3lBfHrnqT7a7S2JAO8Durzo2p216LZ9Ecw7qlajF4bvKrqCfVH1GstSDfQjOEu/VaH60f5Q6OWuKR7AH5mrPsWsN5B/Jd+q1THtK0mamDVTpl3AhaJI1DexMKOsih71xw6DIAlVOXpkgloz4oAE10ZHlqgTUVcEkA5jXybf1HXVdrSUYsoIlTGsScgZA3Zx0UFtSVqzmditwlyGQPxAFAAAOA5iTIgzOuptdDIHUyUAJjdALDpGfVQaANPQwPGyGRGsaumrQxoLKZtR5jTq1JtRoGTUOYd1ZvC191eyqOUDuVaAp3R6QP9mtG36I5h3Vj8OWg1zR5xZvBhmGWWqDkeUZ0GtYtsohnZzvYKOiFAqvRNJx48owO6a5nDGfURQ2maSLQRFbCpJBbNyAonCJmXbUJnbQli5dFu/hWLmMXAsAkK4RsMbThDDnFFblKsS+XuYGZXNou5KKCr4MIFvEohiuIMSOUVPhXg93ZQpUIqyoOcOCSOKcjPFEnUA2+iNc3BMSJ1xOcb4pYxnmMtfJtzrMTR284t7CuaKrBjDW4knCQCD6RBGWoZ1C7ovnPPoGhbgQhgQYYDCwIBnUi9dAdorqAqh8ZbGwaZxDFLEEZQMQFE1iPwWZtIxMYrzOUlAMQDALBkDFHVWrogfAof0wIY7yMp6dfTQAi0hvMLyhmYzbLgMuEAcRJyVgZJGszPMfpOlIgBdgoJgTv/vbQ3Ct9FTC6O6tAGETLkwqgzxWmIOXPWU2O+llTExLFieMWQsqNh2FAMR/nWNtFdD51ZIxCVjFnqnVPPUgR1Zcx3Vk6foru6sEEoqs8scNw4gwtg5SAVJkjWRlmausaI4u45AQy+E+mHZEQgxlACHUdZoifCWkgW7mBhjRMRg5rtE7pg0aa5t9Fu27dzHmHtXJwksA6jFjY72l89kKN1dIKBVn8O2w2juNwDdlgf0rQoPhj8C58BoMshV213tn0RzDurz7SbZOYFegWfRHMO6udajL4X9MfD+prCsuTpIBOpLkcnGt/wDVaPlDeZbigH1B9TUBZM3kaIJt3Z5Ya1THsorT7ZZDh1gqwG8qwaPlVOko5dCsYVDZnOCcpw7ThnrNH0xWujIGzoYV8eIk8fX/ADsDGXT11fatBcUescXTAH6VeEpYgKDPv6GznjOMMMJCw8MpBUtMEZzq2CpXkwq8SWfIc+EKOYACeuinfoqphQOrQAN2VMWoe4+KUDYWkT7UZExPIddRsMzIueeYPLBIJgc3zoooPFMl2SREZSOUTBp1SklsCTtNEEWTxRzDuqGkaMjiHRWAMwwBzp9H9FeYd1WUELFlEGFFVRuUBR1CpBBJaBJABMZkCYBPJJ66YvTYqCdQenD0zmgz9MQuSg1KuI8rH0ARtGRMc1FWLKwCFCkgeiANnJVeiDN23uepQFHdRNvLKihH07zcrcnEIwlVnGCYBAHrSQCPGjbVxXUMplSJBoHhtAbYY60e2w6HXF+WapXTFs41MSeOgJjG5yKLy4sJ/rJ2Gpv3o162jwpfnG3q2VeOV8BLH+lThHKzbqYkpgAEMyv0MzIMvhUtHItSTRpQITMkFj7RxYnJ+I4uum0hSHa4cwicVRmSwxEmN+YA6axy9t8VtjT1togfEMRhT6QILQMwZAGJRJjZWkjAiQQQdRBkHprnuDbbYrZeSyopwiCVVAFRY2ktLkj1lGwCtdVOMMiMsnjkwqsI2rMltWcdNblYsE3bYdSrCVYFSN4IgipClSqoVB8MfgXPgNGUHwv+Bc+A0GZbJMzXd2tQ5h3Vw7sBrrubPojmHdXOtRj8NIMYJEwv6msXR7+O+mUQlzbva14VqcP6QVuKIkFB9TVl6PbC30I9a3c6ONa8aY9latKlUXNdGUWahGdxcAOaENACzBGHMnfm2XINtUqgFwoXJxKxbjEGWfiYRORChtW6rdARwmFxvMzmcRJIbcc9mVFNpVpbqSAGJRsE6pZcjnt1Z7Ki2kNxWUFgThZCIcEAkxsnLb0GiUsqq4BkM9RIiSTkRq10rdoIIUZa9ZJJOsknMmggtpcWMCCRB5RlEg7o76dLKrJAiTJ7/wBT11OnohCpqs0lSrFWKCNj0V5h3UnNKx6C/CvcKZqBqqW8W9FZHtEwvRtPPEctJkxa/R3e0eXk7++2aCs3QCAcidU6jyA6p5NdWUzKCIIBB1g5g9FQS3h1ExuJkDmOsUFd+7gzwsVzJKwSvKRuq22+ITB+X6E0wuHapHUR1j9YqjQ1KlkIgDjLyKxPE6CD1ignwov+E7a4QsB8PGPTlUHtgmcjtB591HLqrMs8Qta9iCnwNOCeUFWXmUHbXPOfW8b8ETFVO4gkmAMzOoAazUGeoWLRuPB9BIxfzuRIT4QMLHfKjVNYxm63fUXaDYLoXbIOcQEDEqjJBJ1HW2qQWNaVMBSYxXdxp6VV4qkjgzBBgwc9RgGDuMEHpoJUHwv+Bc+A0ZQfDH4Fz4DQZmk2ydVd3Z9Ecw7q4hFIGddvb1DmHdXNpi8OW1Lqx2L+rGsmxeDX0gEQlz6rXhWtw5cAdQT6o+pqx9Gs4b6ZzKXPqt+NMeytamenpNXRkOLa4i0DERBMZxump09KgjTEVYIqQIoKghqxUqVKgVIUqQoIWPQX4V7hUL7AZ59AZj1KCano/oL8K9wqTigG85IyBUb2GHLmOrpqK3gSFTjT62tQNpLbeYcmqryKi6BtYB5wDQM1wThmW1xtjedwpO4AnqA1knUBy06W1XJQANwAHdTeaAM7c4kzE64GygrR3kArmCZjVHqkE69nNTs2FlnPESvyLCeqraGHHIYZIpBX+Yg6/hiQN8zukDErmuFb7DSWKnNAqEZkYWCMJE5GWczyCulUxWXaso73XKgy+RIBMLbRDnzq1ZyuomV1Ns+3p5IkodQOTTrE7QK1OAXJR514yetVIE7YGU81JbCAzhHUKs4KPFY77l0c2F2UfJRWMOzHO5drrunIjFWDiPWwOU7QUimtaUjyUdWjXBBjnGzppr1q9ixJcEew6DD0OsMPnTWHck40CnLMMHVuYwD1iuqsfh3hEh1tq5WPTIJQ5gYSHjVn8qv8nmuFrhcz6AJyzYA6iuTcQpnzc9Z/Dulnz4wGSqhSIBDSSWRgdfq5Vv8ABWjhLSLEGMR2cZszkdW7oovwdQfC/wCBc+A0YKD4X/AufAaIytLvspgREV3tk8Ucw7q4i7aV856q7a2MhzDurm0wfKG0WuKf5B9TVn2Y8+gmYt3fqtVrcN+mvwj6mrF0ZI0heVLkdu3THsrXqDmp1TpD4QTXRk9Kh0vNhZiBxZy1aszJOqoLpBfA6BijEg5DVBAJ3ZxtoC6VDWdKDOy7BEGG3SZMQKr0LS1ZZL5szkTsEyBn/KQaA6nDVRavYmdY9Aga5mRPQeSrCYzOQoLQ1OKqBqSmgWj+gvwr3Cp1Xox4i/CvcKp0/hBLK4nOvJVGbMdyjbz6htigJioXbiJm7KvxEL31xmncN6RcnPzabFRuPH8zjOfhjprM4kyQCTlJzJ5yc+uptrT0G3p9ljC3bZO4OhPUDVz15rfdAIwKZ1CBnv8A/tUWbjrIR3APqW3ZE7wD0U2aejaTxmCbCCzfCIGHpJHQDRArzZL7jPHcQ6g3nH7w0ddbfBXlG6OLekEMpyFyIZfjAyI5co155xdpY6y44VSxyCgk8wEmg9DQrbWcmMu3xOS7fNjU+Es0we2yIR/KWGP8mKpua5eS/HLO/ERVfBLcRwPf3OrGWPyqdQ4EX8bkusOtLbfrTx9mHbUqk1c2qs7hO86WnZBxgMspjMSY5BJ6K6ujLs8HOdJJcNgxM/GIYHDITOSdoyyyEV0IrnvJ/TbjuwZiy4ZzIMEEDYMpkxzba6AUWrVoPhj8C58BowUHwv8AgXPgNEB27WGZrtLeocw7q4fTHYHIxXc2fRHMO6ubTn/KFyLix7A+pqzdGab6fBd+q1Wpw+YdTuX/AJNWRod0NfWJyS59VumPaVsUzCnpV0RQ9sEEEAg6xsO3OkiATAiTJ5TtPyq5lqBWgpu2AyuurHMka8xE9QFCvwdIADZAhswDLiAsjVhCgCBR9Kgq0i2SDhGZMmGKHtAUPpZUMmMHAATmCwx5RiAmcsUctG0qCjQgQigyNcA6wsnCDy4Yq8UqG4RvlLbuDBUSMpz1ADlkigC4U4ZTR7aDJrjKuFJ5PSYDMKPnqFck993cu7sWOtmC6twEcVeQUEX47OSTkecnEFHXB6xReimUB3gf91K3I2NA4ILpjd2VT6OBMbkbGgAwOSD0aqxeGtCay6KHktmuJAjhZgFlBOU6pAMg5UQl90nA7pOsKxA6gYnlqvRuDjpHnDLG4iC4hksz4TDAkmWJGGOWNlJouwdrRGJlj+vUNXfRi2OUk8sfoKz0vOrDjAhsxuM7t05dYrTs3AwB/wDvNUqxWFBBB6eahlQlGXWUMCdoiVnoyoq/AcD2wR/fWaq0QyXnXCzzguJ+QoOq4K0rzlnRjOYLgnacCOgJ5SpB6a1Grj/J66Q4Scke4/Q6W1Ud9daWrnn282f5HpcEjjXv/wBJ/wBq34VEtUuCczeP/kAHRZtT85q4drh20H1VVV1UmurogltVkhVWdcACY3xrqasN9D6TdAU7eaqG0jCDIIIBIBiGgTAI28murp1xwuUaiuDqNCcL/gXPgNVaKCHiSclJneSwMbgY1clW8L/gXPgNSs5Y8bpQwVtxrr7eocw7q5G1ZwzXXpqHMO6uSMLh/wDEX4f+TViaBaK315UufVbrR8qLzLdQD2B9TVmaFpH+OgMcZLijnlG/4mtY9lbgNPSilW2SpUqVA0Uop6VBHBTFKnSoK8JoHhvRXew6oCW4rADW2B1fCOUhYrSpUHlIsPgFwCUUhWjMgqZxRug91WaO+Ax6p1cldmVVbr28BzwNiAGEkooOozJwkzEcs1z3lBweLal1yUnMbm1gjpHzrny96dZPW1SkHVV3B2k+Z0hH2FsDfBcIWehsLf00LaBUgMrLiGIYlK4hkCVnXs66fS0xIw5CPllWol9xLys4O8zcy9FiXTkk8dehip5mG6q7LeNavlxpAezo7es4x/0lUn5svVWPaOVWpEtOPoHcf1UH5GqbLwznl7gCe81PTHHZUk9JEdxqrR1kNO1WJ53J/QCorT4KWLzbyi/VB7lrqUfITXNcDLiuq38vcUP6GundZrll282f5KHuZ0bwMhFvEci7u+euCxCzy4QtBXLAwsTqgzujW3ymtxVjKteNcCoTSVzoumZQdddXXG6rKu3FWQc8piCQdgBMQJOWdRQHCMsSkA4SeMNsAnJhzxR93RFY5j9COYjMValkKI76u3b+TGT12G0FDJYjM/IDID9ecmpcL/gXPhNFAUBw7cC2H5YUc7MB3T1VHLK8rsrl9ASCwrrE1DmHdXEaTor4mgZSa7iyOKOYd1cljm/KVAbiE+wPqauW08BmEDJJjbJOvqy6RXVeUv4i/APqauYu6KhJJQTO9vGtRPoTBc97c7TfdSAuj/Oftt91EfsqewOtvGl+zJ7A628a1tVH+L76523+6kDe9/c7b/dRA0VPZHWfGrk0G2fU+beNOSAvOX/f3O033VS93SfeOf8A2N41ovodseoOtvGoHRk9gdbeNOSgcekT+JcjfjbuxU3nNI9u5/qN91Hfs6ewOtvGnGjp7A628abAaNfOu7cH9bH/AJVKbvvrnbbxo4aFb9j5nxqD6KgyCDrPjSVccpPm0OCLLG47u7OQFSWJMD0oz5x1mti9YViMQkAhukGRWbwYArskQGAddeteK4z5MB6TWwqzXLLtuWWOd4b4qIrRjLgiDJMSXc7pBI/qFZtz0TXScN8GYwHUcdNgyxLtHPunlG2ucdxq255RBEbwdWdax6ZoHhC6zouL1FRANgVIAHXJPKeQVZZ1CnuWiyMNpUkd4/SqbFzIHn8e6tIVxsRj2mj+ldfzHzq/R9RO8k9AyHyHzoO3MTtCgD4mGI94o3zfFCjLEQg5BtPUDQbXk1Z1tuRR0tL9zDqroBQPBNvCk6sRno2Do1dFHVxyu68uV3Q+nqTauRrwP9BrCBvHPz9ztv8AdW/pbAI5OoI5/Kay10e2AAbYkAA5mumF1HTx/QuO/wC/udp/upY7/v7nab7qPWxZ9j5nxq5dBsnUg6z41rbqyxcvj/PftN40/nr/AL9+s+Nab6FYGtAOlvGoeZ0Yer9fjTYzcd/39ztN91MQ5ILuzgEHC3GkAgkAsThJiJEVqCxo3sj81XJoVg6kHWfGmxqF1iZEHMZ10yahzDurhDo5AgDIas/Gu6tahzDurGiOZ8qHi4nwD6mrDZwdlbflWB5xJ9gfU1YBw7/lWoixcJ2UmwjZUUw76m6TRERcUbKml0GqGUb/AJVO2Bvoq4gGoG2KrdzOugr2lsxKIcx6T6wvIN7cmykiDnKLrYDnYCqDpSDUydoeNB2yq8XECefjE7ScySaIS07eijn+hwOsiK1pVo00e0nWPGpLpKHWy9oeNN+w3dqEc7oP+c0z6E6lcRRVYxiHHgyAFgQATMAkxy5imj0lcRWgowDKcStIMHVmNoIJBG41oaBpocEEYXXJl1xuIO1TsNCJoqDIq5g4SxnIzEYVKSZnVi1HPfJuD0ZgVd0YThIBE7SssGkZTHJWMpOttY7aGk6QFUkmAASTzUDpWgpczYZ+0DDRzjWKjpPBjuqqbxYs0CbcJGFmlhILHi6pidYomzoN1FCgo0AASWTVluapxyi8sWVpHBRHoNPxZHrHhWDpfB72w8jJYOU+i+ISBtjjA9Fdt+zXTsReXGz/AJcKz1ikdBHrOzRByhQCM5ECR1mrjMkyyxcDoxkA7yO/wStHQ0L3AqicIOvUC0cY8kT/AHnWrpXBVnFhQMDMsQ0gHOfSnPM/Pea0NE0VEzRQCQATtIBYiTtMsc+WmWUjllnNaguymFQszAid/LU5quaRaubiq01xAT2zn8K8ZieTUv8AWKrfR5Mz8qyOEyt1zxmwrxRhYgHUWPLmY/pFBDQlHrv2zXTHH07446jo10Xlq23biuZGjqNTv228aJDlRk79LO/yJNa41pu6TbLRFCNor7vmKC0fSMYnURkw3Efpt5iKLsltk1NWCa6K+75iirFkjM1YrZZ0NpF1gddZ3aDSa7C3qHMO6vO20ht5r0Sz6I5h3VdaWOW8rfxEH8g+pq58oa2/LL8ZPgH1vWGhIqzpmnCGrgaEutnVeKqC2SkhA2iqkOWdZrvjMCQm058fkB9nl200L9K0tn4qTg1M4iTvVCfmas4KZMT22VJMYMYlBkIBGrM4hMSDGuYqhtUDIChL6nZrGr9RzGtRdOle8wMIzKskYIVCCFUkHAFO06jsGsGrnvgoXEcXYRiJJkA42khZ1iJy1787QdK8+mLXcSA42uux4HrCM42j4YI0NIVgxwgANiJEADjTiORHLmPnWLbK1JjYp0HhV0JDkDESpMGFIGREmI1SMu81pOXQQLbMXDKxYh0diBGOMwpgjFhgTmIrAuXBMKrOhOITxAcoMSJg74AOcUV+1X7xjGETUSkjoB1k/LnpMtds55Yzpq3yAvm2MiAyjN3WIhWABJA2Md0HVJHDsTBUsuyeJmNuZxDqkVK0qoMK5D5k7ydp5akbgrGV3dsTzWTUU3UdiGLkFZgKSAJ15iMROUk9AGqkLt5dTk8jgMP0PzqZuCoG5U5Vy5Vcmn3DkUXnxkfLCaruu75Fgo2hZnmxn9ADUfOUhcq8qcqnatBRAFXTQ3nKfzlZQSGqq++UVDzlD6Vc4jncrfSYpIRjG8N4zJPWZ/WpWVZ2CrmTq8eaqXAkwKMb/DUp67Djn2V9gcp29Vejp6pPkR0l1ACrmF9aM3ba3Iu4VBLlQGdRYRTH/Uyn2fP2J0XSwlwH1XhHyMA+o0xGRMcx5K1r2lMCRllWCAGBU6jl0GtHQL4dIcS68RjvI1N0iD01nKAgaY/J1Vfa0knIgVBbKVJWQaiKz6FzKNw6q72z6I5h3V5619faHXXoNn0RzDuoscd5aOReT4B9b1z3nTXQ+Wg/xk+AfW9c2xA2VqMrVeajcuEVAXBQtzSlfURh5xxv+u/m1tCV3SMWRnDyKeN0gau+pBv7iKrxjeOum84N46600tLVS1P5wbx10xcbx10FFu+1pxdTWPSGxl2g/wB7AdlbulaSlw21BBQg3ip3qQqqeTEWMb0rFeN4oVRDhNavhXLcCSVPdzUvTOUbul30PpOM9cGT8tVMmlbERiByBR86itpRqAHf166kt5ScIYEjZInqrnxjHGJ+dc7FHOS3dFIY9r9SqO8GmmlNXUa1P6PhO1m64+mKWAb27beNKaU00moXmxy9pvGl5sb26HcfrSmnBoulfmNzuP6ye+aRRxqfrUd//VWTSLRRNRWbl0bAebPw7qq0jTFwOGlThOvf0j9KIS4raiDzGoaQmMFdkHtEQOqfmKahxgGwcLYtZGYmMjsMRnUWJJ58yd9UaC3FI3EjuomtukpxSNNSoGK8pHNH6ip6I+BwSSVeEMxkZ4hyG8kdI3VAj+5IqLWwRBnP+Y+NEdEAKFey1B2dIcqCWM6jzgwT8quTSH3/ACFY1YhNabdXqNj0V+Fe4V5vauEjOvSbPojmHdUtVzPlRwXeu3Ea2mIBQpOJRniYxmRsIrEfyb0k/wCWe3b+6vRKVU085PkzpJyNowcvTt/dQd3yQ0kFAtkkEnFx0yGEx62+K9SpVOVHldnyR0nE+KwY4uHjpu43r1M+SGk+5P8AqJ99eo0qvKjy9fI/SNtlv9Rfvqz+Dr3um7afdXpZpCnKq80Hkff923bT7qGPknpcqwsmVcH009EORPpeznXqtMacqPPH8ndKII82cwR6afdQej+S2lDAfMYYzPGtjWpB9bea9QpjTaPP/wCH9J90e3b+6l/D+k+6Pbt/dXoNKhp59/D+k+6PbT7qX8P6T7o9u391eg0qJp59/D+k+6Pbt/dT/wAP6T7o9tPur0ClRdPP/wCH9J92e2n3VXpPk7pRRgLWZEenb+6vRKY0TTzNPJfSgwIsxmMw9vVtB42qK0P3BpPuz20+6u8p6Wrp5VZ8i77s5e0447YYe2JXYcyau/ge7sR+3br04U9TlR5h/Bekexc/1LfjU7fkZf2rcH/sTxr0ylTlR5npPklpIRiiOzAZAvbzPXQy+SWmHBitvmVxDHbyB16m2V6pT1eVHAaN5MXkBHmyZM5sm4DYeSrf4eve6/Ov3V3VKpscOOAdIAyt/mT7q7W3kAOQd1TpUH//2Q==',
-            title: " "
+            src: 'img/edufondo.jpg',
+            
           },
           {
             src: 'https://www.balneariais.es/adminbal/assets/images/noticias/educacion-sexual-para-reducir-embarazos.jpg',
-            title: " "
+            
           },
           {
             src: 'https://www.scout.es/wp-content/uploads/2020/03/educacionsexual_freepik.jpg',
-            title: " "
+            
           },
 
           
         ],
         links:[
-          {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh3GcsNT_BTYhdCuKGJv3860wFDvl_9rCGvw&usqp=CAU', title:'curiosidades', sub:'sobre la sexualidad', path:'curiosidades.html'},
-          {src:'https://img.freepik.com/vector-premium/sabias-que-letras_23-2148737372.jpg?w=2000', title:'Sabias que...', sub:'sobre la sexualidad', path:'curiosidades.html'},
-          {src:'https://img.freepik.com/vector-premium/cientifico-dibujos-animados-tubos-ensayo-experimentos-ciencia_46527-27.jpg', title:'Artículos científicos', sub:'sobre la sexualidad', path:'curiosidades.html'},
-          {src:'https://nutricioni.com/wp-content/uploads/2018/09/Ilustracio%CC%81n-del-vector-icono-de-la-charla-sobre-el-sexo-en-la-discusio%CC%81n-el-conocimiento-sobre-la-educacio%CC%81n-sexual.-.jpg', title:'Componentes de la sexualidad', sub:'sobre la sexualidad', path:'composex.html'}
+          {color:'pink lighten-4',src:'https://imagenes.elpais.com/resizer/V7WZBBm5NXrkmy0bejVyNcrsgn0=/1200x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/MUENA6MT7M7PSC5RPVQ6WKUAJQ.jpg', title:'curiosidades', body:'SEXO, PODER y MACHISMO. El modelo tradicional de hombre es un modelo de competitividad y rendimiento, con el resto de los hombres. Se trata de demostrar, desde la más tierna infancia, quién es más machote.', path:'curiosidades.html'},
+          {color:'white',src:'https://img.freepik.com/vector-premium/sabias-que-letras_23-2148737372.jpg?w=2000', title:'Sabias que...', sub:'sobre la sexualidad', path:'sabias.html'},
+          {color:'pink lighten-4',src:'https://img.freepik.com/vector-premium/cientifico-dibujos-animados-tubos-ensayo-experimentos-ciencia_46527-27.jpg', title:'Artículos científicos', sub:'Uso de preservativos', body:"Pese a la problemática del SIDA y el creciente contagio de otras ETS, la juventud usa menos los preservativos debido en parte, a una falta de conciencia de riesgo.", path:'articulo.html'},
+          {color:'white',src:'https://nutricioni.com/wp-content/uploads/2018/09/Ilustracio%CC%81n-del-vector-icono-de-la-charla-sobre-el-sexo-en-la-discusio%CC%81n-el-conocimiento-sobre-la-educacio%CC%81n-sexual.-.jpg', title:'Componentes de la sexualidad', sub:'Componente Vincular', body:'Comprende lo relacionado con el desarrollo del afecto, sentimientos amorosos y conductas de seducción que buscan a través del cuerpo y de los cinco diferentes sentidos, la obtención de placer con otros o con uno(a) mismo(a). Contempla la posibilidad de poder disfrutar sin culpa y sin vergüenza. Su vivencia no se limita a la relacioón sexual genital o coital, pues también puede experimentarse en otras actividades, como por ejemplo el baile.', path:'composex.html'},
+          {color:'pink lighten-4',src:'https://educacion30.b-cdn.net/wp-content/uploads/2020/11/educacion-sexual-videos.jpg', title:'Beneficios de la educación sexual',sub:'Uso de preservativos', body:'Pese a la problemática del SIDA y el creciente contagio de otras ETS, la juventud usa menos los preservativos debido en parte, a una falta de conciencia de riesgo.', path:'bene.html'}
           
         ],
 
@@ -236,6 +204,7 @@
         ]
       }
     },
+    
     })
   </script>
 </body>

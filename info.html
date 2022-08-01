@@ -11,10 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="compo/barra.js"></script>
     <script src="compo/pie.js"></script>
-    <title>curiosidades</title>
+    <title>Info</title>
 </head>
 <body>
-    <div id="curi">
+    <div id="info">
         <v-app >
             <barra></barra>
             <v-main >
@@ -26,31 +26,50 @@
                                     <v-layout row wrap>
                                         <v-col cols="12" xs="12" sm="12">
                                             <v-card-title class="justify-center"  >
-                                            <p class="text-sm-h2   font-weight-bold white--text" >DATOS CURIOSOS</p>
+                                            <p class="text-sm-h2  font-weight-regular white--text" >¿QUÉ ES EDUSEX?</p>
                                             </v-card-title>
                                         </v-col>
                                     </v-layout>
                                 </v-card>
                                 
                             </v-container>
-                                
+                            <template name="what is">
+                                <v-container >
+                                  <v-row wrap >
+                                    <v-card class="elevation-0 pa-2 " src="https://educacion30.b-cdn.net/wp-content/uploads/2020/10/libros-educacion-sexual-978x652.jpg" >
+                                      <v-layout row wrap>
+                                        <v-col cols="12" xs="12" sm="12">
+                                        </v-col>
+                                        <v-col cols="12" xs="12" sm="12" >                              
+                                          <v-card-text class="pa-5 " >
+                                            <p class=" text-sm-h4 text-justify font-weight-regular font-italic "> 
+                                              EduSex, tiene como objetivo fortalecer los conocimientos biológicos, psicológicos y de relaciones interpersonales y sociales relacionados con la sexualidad humana en un concepto de género y respeto.
+                                            </p>
+                                          </v-card-text>
+                                        </v-col>
+            
+            
+                                      </v-layout>
+                                    </v-card>
+                                  </v-row>
+                                  
+                                </v-container>
+                              </template>
+                         
                             
                         </template>
                         <template name="links-pag">
                             <v-container  grid-list-md class=" elevation-5">
                                 <v-layout row wrap> 
                                     
-                                    <v-flex xs12 	sm6 md4 v-for="curi in curis">
+                                    <v-flex xs12 	sm6 md4 v-for="perfil in perfils">
                                     <v-card class="mx-auto mt-4 mb-4 text-justify elevation-8" max-width="450">
-                                        <v-img :src="curi.src" height="300px"></v-img>
+                                        <v-img :src="perfil.src" height="300px"></v-img>
 
                                     
-                                        <v-card-text >
-                                            <p class="text-subtitle-1 text-justify font-weight-regular  text--primary ">
-                                                {{curi.body}}
-
-                                            </p>
-                                        </v-card-text>
+                                        <v-card-title>
+                                        {{perfil.title}}
+                                        </v-card-title>
 
                                     </v-card>
                                     
@@ -68,17 +87,19 @@
 </body>
 <script>
     new Vue({
-        el: '#curi',
+        el: '#info',
         vuetify: new Vuetify(),
         data() {
             return {
-                curis:[
-                    {body:"SEXO, PODER y MACHISMO. El modelo tradicional de hombre es un modelo de competitividad y rendimiento, con el resto de los hombres. Se trata de demostrar, desde la más tierna infancia, quién es más machote.",src:"https://pbs.twimg.com/media/FTEJK-sXoAEHX0n?format=jpg&name=900x900"},
-                    {body:"Los humanos de todas las edades experimentan deseo y buscamos gratificación emocional o física ya que queremos sentirnos conectados con nosotros mismos y con otros seres humanos.",src:"https://www.eluniverso.com/resizer/IE3EH4EA9pFuUr1HcL0iDy3iEJ0=/1000x664/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/AD6DTCG2VFCUROY6D6MGV7YAAA.jpg"},
-                    {body:"la vida sexual positiva puede ser una fuente de salud y bienestar, pero también puede ser una fuente de dolor y sufrimiento para las mujeres y los hombres que viven experiencias negativas, especialmente si se trata de adolescentes.",src:"https://www.soycarmin.com/__export/1548109027159/sites/debate/img/2019/01/21/brooke-winters-579062-unsplash_x1x_crop1548108691514.jpg_943222218.jpg"},
-                    {body:"El mundo de la sexualidad posee una riqueza tan grande que a su alrededor existe un gran número de curiosidades que suelen pasar desapercibidas para la gran mayoría de las personas.",src:""},
-                    {body:"Durante un beso, por lo menos 40 mil bacterias pasan de una boca a otra, sin embargo, la mayoría son inofensivas.",src:"https://cf.ltkcdn.net/relaciones/images/orig/237071-2111x1420-beso-apasionado.jpg"},
+                perfils:[
+                    {title: 'rafael llanos', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg' },
+                    {title: 'Steven Arcos', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg' },
+                    {title: 'Valerie Arias', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'},
+                    {title: 'Zharick Insignares', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg', },
+                    {title: 'Javier Vera', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg' },
+
                 ]
+                
             }
         },
         

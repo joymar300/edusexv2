@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="compo/barra.js"></script>
+    <script src="compo/pie.js"></script>
+    <title>Beneficios de la educación sexual</title>
+</head>
+<body>
+    <div id="beni">
+        <v-app >
+            <barra></barra>
+     
+            <template name="links-pag">
+                <v-container fluid grid-list-md class="orange lighten-4">
+                    <v-layout row wrap> 
+                            
+                        <v-flex xs12>
+                        <div class="text-xs-center text-sm-h2 font-weight-regular white--text mt-16 orange--text text--darken-1" align="center" ><p>Beneficios de la educación sexual</p></div>
+                        
+                        </v-flex>
+                        
+                        <v-flex xs12 	sm6 md4 v-for="bene in benes">
+                        <v-card class="mx-auto mt-4 mb-4" max-width="450">
+                            <v-img :src="bene.src" height="300px"></v-img>
+                            <v-card-title style="word-break: break-word" primary-title>
+                                {{bene.title}}
+                            </v-card-title>
+                        
+                            <v-card-text class="text-justify">
+                            {{bene.body}}
+                            </v-card-text>
+
+                        </v-card>
+                        
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </template>
+
+            <pie></pie>    
+        </v-app>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#beni',
+        vuetify: new Vuetify(),
+        data() {
+            return {
+                benes:[
+                    {title:"Tomarán decisiones más correctas y responsables",body:"Recibir una educación sexual integral, partiendo del conocimiento científico, ayuda a los jóvenes a tomar decisiones más responsables sobre su sexualidad. Se respetarán más a sí mismos y a los demás.",src:"https://jeronicalafell.com/wp-content/uploads/2020/06/frases-celebres-toma-decisiones-800x675.jpg"},
+                    {title:"Más tolerancia y respeto",body:"Se respetará más la diversidad humana que existe en los cuerpos, en las mentes y en los afectos. Serán más tolerantes y respetuosos en las formas y maneras de relacionarse.",src:"https://popeye.cl/wp-content/uploads/2019/11/tolerancia.jpg"},
+                    {title:"Permitiría erradicar todas esas creencias erróneas y mitos culturales",body:" Al tener más conocimientos e información -siempre desde el método científico- tomarán decisiones más responsables, lo que facilitará que tengan menos conductas de riesgo. Se tiene más conocimiento sobre el cuerpo humano y sobre cuestiones de salud sexual que nos atañen a todos.",src:"https://www.las2orillas.co/wp-content/uploads/2017/12/borrador.jpg"},
+                    {title:"Retrasan el inicio de las relaciones sexuales (son más libres para tomar decisiones)",body:" “Si alguien piensa que por recibir educación sexual integral, los jóvenes van a ser más promiscuos, no es cierto. El resultado es otro: toman mejores decisiones y sobre todo más responsables”, afirma Yáñez, quien también es miembro de la FESS. Además, “hay estudios que indican que quienes han recibido una formación en educación sexual retrasan sus primeras relaciones sexuales. Porque se dejan influenciar menos por el grupo y la presión social. Son más autónomos a la hora de tomar sus decisiones”",src:"https://conceptodefinicion.de/wp-content/uploads/2018/06/Desmentir-2.jpg"},
+                    {title:"Combate la violencia de género",body:"“La única manera que hemos visto que realmente es eficaz para prevenir la violencia de género es incluyendo educación sexual integral a las víctimas de esa violencia”, asegura esta profesional. Recibir una educación sexual integral es un recurso contra la violencia de género: “Se empodera a la mujer y se empodera también al hombre para establecer relaciones igualitarias y sanas”",src:"https://static2.mujerhoy.com/www/multimedia/202011/25/media/cortadas/violencia-machista-coronavirus-violencia-genero-kPd-U120868680861H1B-624x468@MujerHoy.jpg"},
+                    {title:"Previene disfunciones sexuales no orgánicas",body:"De forma general, explica Yáñez, las personas que vienen a consultar una disfunción sexual de origen no orgánico, deben saber que todas tienen su base en una sexualidad que ha sido reprimida o que no ha sido cultivada. Que está basada en mitos y creencias erróneas. Que está muy coitocentrada o basada únicamente en los genitales. Hay gente que no sabe cómo excitarse o cómo potenciar su deseo.",src:"https://www.tucanaldesalud.es/es/tusaludaldia/articulos/pautas-entender-disfuncion-sexual-forma-global.ficheros/584864-disfucion-sexual-causas.jpg?width=550&height=344&aspectRatio=true"},
+                ]
+            }
+        },
+        
+    })
+</script>
+
+</html>
